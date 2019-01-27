@@ -24,9 +24,9 @@ class SetViewController: UIViewController {
     
     @IBOutlet weak var deal3CardsButton: UIButton!
     
-    let red = UIColor.init(red: (219 / 255), green: (50 / 255), blue: (54 / 255), alpha: 1)
-    let yellow = UIColor.init(red: (244 / 255), green: (194 / 255), blue: (13 / 255), alpha: 1)
-    let green = UIColor.init(red: (60 / 255), green: (186 / 255), blue: (84 / 255), alpha: 1)
+    let red = #colorLiteral(red: 0.9176470588, green: 0.262745098, blue: 0.2117647059, alpha: 1)
+    let yellow = #colorLiteral(red: 0.9882352941, green: 0.737254902, blue: 0.01960784314, alpha: 1)
+    let green = #colorLiteral(red: 0.2352941176, green: 0.7294117647, blue: 0.3294117647, alpha: 1)
     
     lazy var colors = [red, yellow, green]
     
