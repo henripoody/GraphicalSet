@@ -10,6 +10,11 @@ import UIKit
 
 class SymbolView: UIView {
 
+    var numberOfSymbols = 1
+    var symbol = "Diamond"
+    var color = #colorLiteral(red: 0.2352941176, green: 0.7294117647, blue: 0.3294117647, alpha: 1)
+    var shading = "Filled"
+    
     override func draw(_ rect: CGRect) {
         let firstDiamondPath = UIBezierPath()
         firstDiamondPath.move(to: CGPoint(x: firstSymbolOfThreeRect.midX, y: firstSymbolOfThreeRect.minY))
@@ -18,7 +23,7 @@ class SymbolView: UIView {
         firstDiamondPath.addLine(to: CGPoint(x: firstSymbolOfThreeRect.minX, y: firstSymbolOfThreeRect.midY))
         firstDiamondPath.close()
 
-        UIColor.green.setFill()
+       color.setFill()
         firstDiamondPath.fill()
         
         let secondDiamondPath = UIBezierPath()
@@ -28,7 +33,7 @@ class SymbolView: UIView {
         secondDiamondPath.addLine(to: CGPoint(x: middleSymbolRect.minX, y: middleSymbolRect.midY))
         secondDiamondPath.close()
         
-        UIColor.green.setFill()
+        color.setFill()
         secondDiamondPath.fill()
         
         let thirdDiamondPath = UIBezierPath()
@@ -38,7 +43,7 @@ class SymbolView: UIView {
         thirdDiamondPath.addLine(to: CGPoint(x: thirdSymbolRect.minX, y: thirdSymbolRect.midY))
         thirdDiamondPath.close()
         
-        UIColor.green.setFill()
+        color.setFill()
         thirdDiamondPath.fill()
 
     }
