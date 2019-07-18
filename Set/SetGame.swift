@@ -28,7 +28,7 @@ class SetGame {
     
     private let shadings = [Shading.firstShading, Shading.secondShading, Shading.thirdShading]
     
-    private let numbers = [NumberOfSymbols.One, NumberOfSymbols.Two, NumberOfSymbols.Three]
+    private let numbers = [Number.One, Number.Two, Number.Three]
     
     var selectedCards = [Card]()
     var matchedCards = [Card]()

@@ -10,7 +10,7 @@ import UIKit
 
 class ShapeView: UIView {
 
-    var number: NumberOfSymbols? {didSet{setNeedsDisplay()}}
+    var number: Number? {didSet{setNeedsDisplay()}}
     var shape: Shape? {didSet{setNeedsDisplay()}}
     var color: Color? {didSet{setNeedsDisplay()}}
     var shading: Shading? {didSet{setNeedsDisplay()}}
