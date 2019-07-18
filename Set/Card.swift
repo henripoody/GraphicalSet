@@ -8,23 +8,31 @@
 import Foundation
 
 enum Color {
-    case firstColor, secondColor, thirdColor
+    case green, purple, pink
+    
+    static let all = [green, purple, pink]
 }
 
 enum Shape {
-    case firstSymbol, secondSymbol, thirdSymbol
+    case diamond, squiggle, oval
+    
+    static let all = [diamond, squiggle, oval]
 }
 
 enum Shading {
-    case firstShading, secondShading, thirdShading
+    case stroked, filled, striped
+    
+    static let all = [stroked, filled, striped]
 }
 
 enum Number: Int {
-    case One = 1, Two = 2, Three = 3
+    case one = 1, two = 2, three = 3
+    
+    static let all = [one, two, three]
 }
 
 
-struct Card {    
+struct Card {
     var cardID: Int
     let symbol: Shape
     let color: Color
