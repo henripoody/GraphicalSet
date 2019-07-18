@@ -10,15 +10,15 @@ import UIKit
 
 class SetCardView: UIView {
 
-    private lazy var symbolView = createSymbolView()
+    private lazy var shapeView = createShapeView()
 
-    private func createSymbolView() -> UIView {
-        let view = SymbolView()
+    private func createShapeView() -> UIView {
+        let view = ShapeView()
         addSubview(view)
         return view
     }
     
-    private func configureSymbolsView(_ view: UIView) {
+    private func configureShapesView(_ view: UIView) {
         view.isOpaque = false
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
     }
@@ -26,8 +26,8 @@ class SetCardView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        configureSymbolsView(symbolView)
-        symbolView.frame = symbolViewFrame
+        configureShapesView(shapeView)
+        shapeView.frame = shapeViewFrame
     }
     
     override func draw(_ rect: CGRect) {
@@ -39,41 +39,21 @@ class SetCardView: UIView {
 
 extension SetCardView {
     private var cornerRadius: CGFloat {
-        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
+        return bounds.size.height * ShapeView.SizeRatio.cornerRadiusToBoundsHeight
     }
-    private var symbolViewOriginXCoordinate: CGFloat {
-        return bounds.size.width * SizeRatio.xOffsetToBoundsWidth
+    private var shapeViewOriginXCoordinate: CGFloat {
+        return bounds.size.width * ShapeView.SizeRatio.xOffsetToBoundsWidth
     }
-    private var symbolViewOriginYCoordinate: CGFloat {
-        return bounds.size.height * SizeRatio.yOffsetToBoundsHeight
+    private var shapeViewOriginYCoordinate: CGFloat {
+        return bounds.size.height * ShapeView.SizeRatio.yOffsetToBoundsHeight
     }
-    private var symbolViewWidth: CGFloat {
-        return bounds.size.width * SizeRatio.symbolViewWidthToBoundsWidth
+    private var shapeViewWidth: CGFloat {
+        return bounds.size.width * ShapeView.SizeRatio.shapeViewWidthToBoundsWidth
     }
-    private var symbolViewHeight: CGFloat {
-        return bounds.size.height * SizeRatio.symbolViewHeightToBoundsHeight
+    private var shapeViewHeight: CGFloat {
+        return bounds.size.height * ShapeView.SizeRatio.shapeViewHeightToBoundsHeight
     }
-    private var symbolViewFrame: CGRect {
-       return CGRect(x: symbolViewOriginXCoordinate, y: symbolViewOriginYCoordinate, width: symbolViewWidth, height: symbolViewHeight)
-    }
-}
-
-extension CGRect {
-    var leftHalf: CGRect {
-        return CGRect(x: minX, y: minY, width: width/2, height: height)
-    }
-    var rightHalf: CGRect {
-        return CGRect(x: midX, y: minY, width: width/2, height: height)
-    }
-    func inset(by size: CGSize) -> CGRect {
-        return insetBy(dx: size.width, dy: size.height)
-    }
-    func sized(to size: CGSize) -> CGRect {
-        return CGRect(origin: origin, size: size)
-    }
-    func zoom(by scale: CGFloat) -> CGRect {
-        let newWidth = width * scale
-        let newHeight = height * scale
-        return insetBy(dx: (width - newWidth) / 2, dy: (height - newHeight) / 2)
+    private var shapeViewFrame: CGRect {
+       return CGRect(x: shapeViewOriginXCoordinate, y: shapeViewOriginYCoordinate, width: shapeViewWidth, height: shapeViewHeight)
     }
 }

@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		6128C03E20CCB20000673E61 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6128C03D20CCB20000673E61 /* Card.swift */; };
 		6128C04020CCB3EA00673E61 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6128C03F20CCB3EA00673E61 /* SetGame.swift */; };
-		616606EA21F0F69D009F017F /* SymbolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616606E921F0F69D009F017F /* SymbolView.swift */; };
+		616606EA21F0F69D009F017F /* ShapeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616606E921F0F69D009F017F /* ShapeView.swift */; };
 		616AE4C420CBDB5300E444E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616AE4C320CBDB5300E444E2 /* AppDelegate.swift */; };
 		616AE4C620CBDB5300E444E2 /* SetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 616AE4C520CBDB5300E444E2 /* SetViewController.swift */; };
 		616AE4C920CBDB5300E444E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 616AE4C720CBDB5300E444E2 /* Main.storyboard */; };
@@ -22,7 +22,7 @@
 /* Begin PBXFileReference section */
 		6128C03D20CCB20000673E61 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		6128C03F20CCB3EA00673E61 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
-		616606E921F0F69D009F017F /* SymbolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SymbolView.swift; sourceTree = "<group>"; };
+		616606E921F0F69D009F017F /* ShapeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeView.swift; sourceTree = "<group>"; };
 		616AE4C020CBDB5300E444E2 /* Set.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Set.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		616AE4C320CBDB5300E444E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		616AE4C520CBDB5300E444E2 /* SetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetViewController.swift; sourceTree = "<group>"; };
@@ -64,12 +64,12 @@
 		616AE4C220CBDB5300E444E2 /* Set */ = {
 			isa = PBXGroup;
 			children = (
-				616AE4C520CBDB5300E444E2 /* SetViewController.swift */,
 				6128C03D20CCB20000673E61 /* Card.swift */,
 				6128C03F20CCB3EA00673E61 /* SetGame.swift */,
-				61BA06A321E5CE0F004FDB53 /* Gird.swift */,
 				61BA06A921E5EF72004FDB53 /* SetCardView.swift */,
-				616606E921F0F69D009F017F /* SymbolView.swift */,
+				616606E921F0F69D009F017F /* ShapeView.swift */,
+				61BA06A321E5CE0F004FDB53 /* Gird.swift */,
+				616AE4C520CBDB5300E444E2 /* SetViewController.swift */,
 				616AE4C720CBDB5300E444E2 /* Main.storyboard */,
 				616AE4D520CBDBF900E444E2 /* Supporting Files */,
 				616AE4CF20CBDB5600E444E2 /* Info.plist */,
@@ -119,7 +119,7 @@
 				TargetAttributes = {
 					616AE4BF20CBDB5300E444E2 = {
 						CreatedOnToolsVersion = 9.4;
-						LastSwiftMigration = 1000;
+						LastSwiftMigration = 1020;
 					};
 				};
 			};
@@ -165,7 +165,7 @@
 				616AE4C620CBDB5300E444E2 /* SetViewController.swift in Sources */,
 				6128C03E20CCB20000673E61 /* Card.swift in Sources */,
 				616AE4C420CBDB5300E444E2 /* AppDelegate.swift in Sources */,
-				616606EA21F0F69D009F017F /* SymbolView.swift in Sources */,
+				616606EA21F0F69D009F017F /* ShapeView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -310,7 +310,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8WWJWU7869;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -318,7 +318,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobileappskitchen.Set;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -328,7 +328,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8WWJWU7869;
 				INFOPLIST_FILE = Set/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -336,7 +336,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobileappskitchen.Set;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
