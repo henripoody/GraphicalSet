@@ -22,7 +22,7 @@ class SetGame {
     private let successMessages = ["Great! 👍", "Keep on going 👏", "One set found ✅", "That's right 🙌", "Cool 😎"]
     private let failureMessages = ["Not a set 👎", "Try again 🤦🏻‍♀️", "Still not found 🙅🏻‍♂️", "Keep trying 🔄", "Maybe next time🤞"]
     
-    private let symbols = [Symbol.firstSymbol, Symbol.secondSymbol, Symbol.thirdSymbol]
+    private let symbols = [Shape.firstSymbol, Shape.secondSymbol, Shape.thirdSymbol]
     
     private let colors = [Color.firstColor, Color.secondColor, Color.thirdColor]
     

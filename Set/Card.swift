@@ -11,7 +11,7 @@ enum Color {
     case firstColor, secondColor, thirdColor
 }
 
-enum Symbol {
+enum Shape {
     case firstSymbol, secondSymbol, thirdSymbol
 }
 
@@ -31,7 +31,7 @@ struct Card: Hashable {
     }
     
     var cardID: Int
-    let symbol: Symbol
+    let symbol: Shape
     let color: Color
     let shading: Shading
     let numberOfSymbols: NumberOfSymbols
