@@ -24,12 +24,7 @@ enum Number: Int {
 }
 
 
-struct Card: Hashable {
-    
-    static func ==(lhs: Card, rhs: Card) -> Bool {
-        return lhs.cardID == rhs.cardID
-    }
-    
+struct Card {    
     var cardID: Int
     let symbol: Shape
     let color: Color
