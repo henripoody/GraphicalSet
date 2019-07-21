@@ -15,18 +15,59 @@ class ShapeView: UIView {
     var color: Color? {didSet{setNeedsDisplay()}}
     var shading: Shading? {didSet{setNeedsDisplay()}}
     
-    var firstShapePath = UIBezierPath()
-    var secondShapePath = UIBezierPath()
-    var thirdShapePath = UIBezierPath()
-    
     private func configureView() {
-        // TODO: Switch on shape
-        
-        // TODO: Switch on number
-        
         // TODO: Switch on color
+        var drawingColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        if let color = color {
+            switch color {
+            case .green:
+                drawingColor = #colorLiteral(red: 0.2926874757, green: 0.8411405683, blue: 0.3332143426, alpha: 1)
+            case .purple:
+                drawingColor = #colorLiteral(red: 0.5009863973, green: 0.4916834831, blue: 0.8349262476, alpha: 1)
+            case .pink:
+                drawingColor = #colorLiteral(red: 1, green: 0, blue: 0.5258871317, alpha: 1)
+            }
+        }
+        // TODO: Switch on number
+        if let number = number, let shape = shape, let shading = shading {
+            switch number {
+            case .one:
+                draw(drawingColor, shape: shape, with: shading, in: middleShapeRect)
+            case .two:
+                draw(drawingColor, shape: shape, with: shading, in: firstShapeOfTwoRect)
+                draw(drawingColor, shape: shape, with: shading, in: secondShapeOfTwoRect)
+            case .three:
+                draw(drawingColor, shape: shape, with: shading, in: firstShapeOfThreeRect)
+                draw(drawingColor, shape: shape, with: shading, in: middleShapeRect)
+                draw(drawingColor, shape: shape, with: shading, in: thirdShapeRect)
+            }
+        }
+    }
+    
+    private func draw(_ color: UIColor, shape: Shape, with shading: Shading, in rect: CGRect) {
+        var shapePath: UIBezierPath
+        // TODO: Switch on shape
+        switch shape {
+        case .diamond:
+           shapePath = UIBezierPath.init(diamondIn: rect)
+        case .squiggle:
+            shapePath = UIBezierPath.init(squiggleIn: rect)
+        case .oval:
+            shapePath = UIBezierPath.init(setOvalIn: rect)
+        }
+        
+        color.set()
         
         // TODO: Switch on shading
+        switch shading {
+        case .filled:
+            shapePath.fill()
+        case .striped:
+            shapePath.stripe(in: rect)
+        case .stroked:
+            shapePath.stroke()
+        }
     }
     
     override func draw(_ rect: CGRect) {
