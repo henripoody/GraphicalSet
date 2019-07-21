@@ -27,6 +27,11 @@ class SetCardView: UIView {
         view.isOpaque = false
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         view.frame = shapeViewFrame
+        
+        number = .three
+        shape = .diamond
+        color = .purple
+        shading = .stroked
     }
 
     override func layoutSubviews() {
@@ -87,6 +92,7 @@ class SetCardView: UIView {
 //            shapePath.stripe(in: rect)
             shapePath.alphaFill()
         case .stroked:
+            shapePath.lineWidth = 2.0
             shapePath.stroke()
         }
     }
@@ -253,6 +259,7 @@ extension UIBezierPath {
     
     func alphaFill() {
         self.fill(with: .normal, alpha: 0.1)
+        self.lineWidth = 2.0
         self.stroke()
     }
 }
