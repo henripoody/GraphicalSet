@@ -84,7 +84,8 @@ class SetCardView: UIView {
         case .filled:
             shapePath.fill()
         case .striped:
-            shapePath.stripe(in: rect)
+//            shapePath.stripe(in: rect)
+            shapePath.alphaFill()
         case .stroked:
             shapePath.stroke()
         }
@@ -247,6 +248,11 @@ extension UIBezierPath {
             self.move(to: CGPoint(x: rect.origin.x + CGFloat(i), y: rect.origin.y))
             self.addLine(to: CGPoint(x: rect.origin.x + CGFloat(i), y: rect.origin.y + rect.size.height))
         }
+        self.stroke()
+    }
+    
+    func alphaFill() {
+        self.fill(with: .normal, alpha: 0.1)
         self.stroke()
     }
 }
