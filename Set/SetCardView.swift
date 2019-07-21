@@ -18,7 +18,7 @@ class SetCardView: UIView {
     private lazy var shapeView = createShapeView()
 
     private func createShapeView() -> UIView {
-        let view = ShapeView()
+        let view = UIView()
         addSubview(view)
         return view
     }
@@ -26,13 +26,68 @@ class SetCardView: UIView {
     private func configureShapesView(_ view: UIView) {
         view.isOpaque = false
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
+        view.frame = shapeViewFrame
     }
 
     override func layoutSubviews() {
         super.layoutSubviews()
         
         configureShapesView(shapeView)
-        shapeView.frame = shapeViewFrame
+    }
+    
+    private func configureView() {
+        // TODO: Switch on color
+        var drawingColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        
+        if let color = color {
+            switch color {
+            case .green:
+                drawingColor = #colorLiteral(red: 0.2926874757, green: 0.8411405683, blue: 0.3332143426, alpha: 1)
+            case .purple:
+                drawingColor = #colorLiteral(red: 0.5009863973, green: 0.4916834831, blue: 0.8349262476, alpha: 1)
+            case .pink:
+                drawingColor = #colorLiteral(red: 1, green: 0, blue: 0.5258871317, alpha: 1)
+            }
+        }
+        // TODO: Switch on number
+        if let number = number, let shape = shape, let shading = shading {
+            switch number {
+            case .one:
+                draw(drawingColor, shape: shape, with: shading, in: middleShapeRect)
+            case .two:
+                draw(drawingColor, shape: shape, with: shading, in: firstShapeOfTwoRect)
+                draw(drawingColor, shape: shape, with: shading, in: secondShapeOfTwoRect)
+            case .three:
+                draw(drawingColor, shape: shape, with: shading, in: firstShapeOfThreeRect)
+                draw(drawingColor, shape: shape, with: shading, in: middleShapeRect)
+                draw(drawingColor, shape: shape, with: shading, in: thirdShapeRect)
+            }
+        }
+    }
+    
+    private func draw(_ color: UIColor, shape: Shape, with shading: Shading, in rect: CGRect) {
+        var shapePath: UIBezierPath
+        // TODO: Switch on shape
+        switch shape {
+        case .diamond:
+            shapePath = UIBezierPath.init(diamondIn: rect)
+        case .squiggle:
+            shapePath = UIBezierPath.init(squiggleIn: rect)
+        case .oval:
+            shapePath = UIBezierPath.init(setOvalIn: rect)
+        }
+        
+        color.set()
+        
+        // TODO: Switch on shading
+        switch shading {
+        case .filled:
+            shapePath.fill()
+        case .striped:
+            shapePath.stripe(in: rect)
+        case .stroked:
+            shapePath.stroke()
+        }
     }
     
     private func drawCard() {
@@ -42,28 +97,77 @@ class SetCardView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-       drawCard()
+        drawCard()
+        configureView()
     }
 }
 
 extension SetCardView {
+    struct SizeRatio {
+        static let shapeViewWidthToBoundsWidth: CGFloat = 0.6
+        static let shapeViewHeightToBoundsHeight: CGFloat = 0.625
+        static let cornerRadiusToBoundsHeight: CGFloat = 0.06
+        static let shapeViewXOffsetToBoundsWidth: CGFloat = 0.2
+        static let shapeViewYOffsetToBoundsHeight: CGFloat = 0.1875
+        static let shapeRectHeightToShapesViewHeight: CGFloat = 0.3
+        static let spaceInBetweenShapesToShapesViewHeight: CGFloat = 0.05
+        static let spaceBeforeAndAfterTwoShapesToShapesViewHeight: CGFloat = 0.175
+        static let spaceBeforeAndAfterOneShapeToShapesViewHeight: CGFloat = 0.35
+    }
+    
     private var cornerRadius: CGFloat {
-        return bounds.size.height * ShapeView.SizeRatio.cornerRadiusToBoundsHeight
+        return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
     }
     private var shapeViewOriginXCoordinate: CGFloat {
-        return bounds.size.width * ShapeView.SizeRatio.xOffsetToBoundsWidth
+        return bounds.size.width * SizeRatio.shapeViewXOffsetToBoundsWidth
     }
     private var shapeViewOriginYCoordinate: CGFloat {
-        return bounds.size.height * ShapeView.SizeRatio.yOffsetToBoundsHeight
+        return bounds.size.height * SizeRatio.shapeViewYOffsetToBoundsHeight
     }
     private var shapeViewWidth: CGFloat {
-        return bounds.size.width * ShapeView.SizeRatio.shapeViewWidthToBoundsWidth
+        return bounds.size.width * SizeRatio.shapeViewWidthToBoundsWidth
     }
     private var shapeViewHeight: CGFloat {
-        return bounds.size.height * ShapeView.SizeRatio.shapeViewHeightToBoundsHeight
+        return bounds.size.height * SizeRatio.shapeViewHeightToBoundsHeight
     }
     private var shapeViewFrame: CGRect {
-       return CGRect(x: shapeViewOriginXCoordinate, y: shapeViewOriginYCoordinate, width: shapeViewWidth, height: shapeViewHeight)
+        return CGRect(x: shapeViewOriginXCoordinate, y: shapeViewOriginYCoordinate, width: shapeViewWidth, height: shapeViewHeight)
+    }
+    
+    private var shapeRectHeight: CGFloat {
+        return shapeView.frame.height * SizeRatio.shapeRectHeightToShapesViewHeight
+    }
+    
+    private var spaceBetweenShapesHeight: CGFloat {
+        return shapeView.frame.height * SizeRatio.spaceInBetweenShapesToShapesViewHeight
+    }
+    
+    private var spaceBeforeAndAfterOneShapeHeight: CGFloat {
+        return shapeView.frame.height * SizeRatio.spaceBeforeAndAfterOneShapeToShapesViewHeight
+    }
+    
+    private var spaceBeforeAndAfterTwoShapesHeight: CGFloat {
+        return shapeView.frame.height * SizeRatio.spaceBeforeAndAfterTwoShapesToShapesViewHeight
+    }
+    
+    private var firstShapeOfThreeRect: CGRect {
+        return CGRect(x: shapeView.frame.origin.x, y: shapeView.frame.origin.y, width: shapeView.frame.width, height: shapeRectHeight)
+    }
+    
+    private var middleShapeRect: CGRect {
+        return CGRect(x: shapeView.frame.origin.x, y: shapeView.frame.origin.y + shapeRectHeight + spaceBetweenShapesHeight, width: shapeView.frame.width, height: shapeView.frame.height * SizeRatio.shapeRectHeightToShapesViewHeight)
+    }
+    
+    private var thirdShapeRect: CGRect {
+        return CGRect(x: shapeView.frame.origin.x, y: shapeView.frame.origin.y + (2 * shapeRectHeight) + (2 * spaceBetweenShapesHeight), width: shapeView.frame.width, height: shapeView.frame.height * SizeRatio.shapeRectHeightToShapesViewHeight)
+    }
+    
+    private var firstShapeOfTwoRect: CGRect {
+        return CGRect(x: shapeView.frame.origin.x, y: shapeView.frame.origin.y + spaceBeforeAndAfterTwoShapesHeight, width: shapeView.frame.width, height: shapeView.frame.height * SizeRatio.shapeRectHeightToShapesViewHeight)
+    }
+    
+    private var secondShapeOfTwoRect: CGRect {
+        return CGRect(x: shapeView.frame.origin.x, y: shapeView.frame.origin.y + spaceBeforeAndAfterTwoShapesHeight + shapeRectHeight + spaceBetweenShapesHeight, width: shapeView.frame.width, height: shapeView.frame.height * SizeRatio.shapeRectHeightToShapesViewHeight)
     }
 }
 
