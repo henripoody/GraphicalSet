@@ -35,10 +35,14 @@ class SetCardView: UIView {
         shapeView.frame = shapeViewFrame
     }
     
-    override func draw(_ rect: CGRect) {
-        let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+    private func drawCard() {
+        let card = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         UIColor.white.setFill()
-        roundedRect.fill()
+        card.fill()
+    }
+    
+    override func draw(_ rect: CGRect) {
+       drawCard()
     }
 }
 
