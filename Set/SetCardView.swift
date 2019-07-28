@@ -111,6 +111,7 @@ class SetCardView: UIView {
 
 extension SetCardView {
     struct SizeRatio {
+        static let cardViewAspectRatio: CGFloat = 5 / 8
         static let shapeViewWidthToBoundsWidth: CGFloat = 0.6
         static let shapeViewHeightToBoundsHeight: CGFloat = 0.625
         static let cornerRadiusToBoundsHeight: CGFloat = 0.06
