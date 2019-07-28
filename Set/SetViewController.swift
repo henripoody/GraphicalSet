@@ -11,10 +11,9 @@ import UIKit
 class SetViewController: UIViewController {
     
 //    lazy var set = SetGame(maxNumberOfBoardCards: cardButtons.count)
-//    
-//    @IBOutlet var cardButtons: [UIButton]!
-//    
+  
     @IBOutlet weak var playgroundView: UIView!
+    
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var scoreLabel: UILabel!
@@ -25,193 +24,31 @@ class SetViewController: UIViewController {
     
     @IBOutlet weak var deal3CardsButton: UIButton!
     
-//    let red = #colorLiteral(red: 0.9176470588, green: 0.262745098, blue: 0.2117647059, alpha: 1)
-//    let yellow = #colorLiteral(red: 0.9882352941, green: 0.737254902, blue: 0.01960784314, alpha: 1)
-//    let green = #colorLiteral(red: 0.2352941176, green: 0.7294117647, blue: 0.3294117647, alpha: 1)
-//    
-//    lazy var colors = [red, yellow, green]
-//    
-//    let symbols = ["▲", "■", "●"]
-//    
-//    let numberOfSymbols = [1, 2, 3]
-//    
-//    let firstShadingStylesAttributes: [NSAttributedString.Key: Any]  = [.strokeWidth: -1] //filled
-//    
-//    let secondShadingStyleAttributes: [NSAttributedString.Key: Any] = [.strokeWidth: 5] //stroked
-//    
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        // Do any additional setup after loading the view, typically from a nib.
-//        startNewGame()
-//    }
-//    
-//    func drawSymbolsOnCardWithColorAndShading(_ numberOfSymbols: Int, symbol: String, on button: UIButton, with color: UIColor, and shadingStyle: Int) {
-//        
-//        var stringAttributes: [NSAttributedString.Key: Any] = firstShadingStylesAttributes
-//        var _symbol: String
-//        
-//        // Find card shading
-//        switch shadingStyle {
-//        case 1:
-//            stringAttributes = firstShadingStylesAttributes
-//            stringAttributes[.foregroundColor] = color
-//            
-//        case 2:
-//            stringAttributes = secondShadingStyleAttributes
-//            stringAttributes[.foregroundColor] = color
-//            
-//        case 3:
-//            stringAttributes = [.foregroundColor: color.withAlphaComponent(0.2)]
-//            
-//        default:
-//            print("Default Case")
-//        }
-//        
-//        // Find card numberOfsymbols
-//        switch numberOfSymbols {
-//        case 1:
-//            _symbol = symbol
-//        case 2:
-//            _symbol = symbol + symbol
-//        case 3:
-//            _symbol = symbol + symbol + symbol
-//        default:
-//            _symbol = symbol
-//        }
-//        
-//        button.setAttributedTitle(NSMutableAttributedString.init(string: _symbol, attributes: stringAttributes), for: .normal)
-//    }
-//    
-//    /// Dictionary that keeps trak of which Cards displayed on which Buttons [cardButton.index: Card.id]
-//    var buttonsOfCards = [Int: Card]()
-//    
-//    func displayBoardCards() {
-//        for index in set.boardCards.indices {
-//            let cardSymbol = set.boardCards[index].symbol
-//            let cardColor = set.boardCards[index].color
-//            let cardNumberOfSymbols = set.boardCards[index].numberOfSymbols
-//            let cardShading = set.boardCards[index].shading
-//            
-//            var symbol: String
-//            var color: UIColor
-//            var numberOfSymbols: Int
-//            var shadingStyle: Int
-//            
-//            switch cardSymbol {
-//            case .firstSymbol:
-//                symbol = symbols[0]
-//            case .secondSymbol:
-//                symbol = symbols[1]
-//            case .thirdSymbol:
-//                symbol = symbols[2]
-//            }
-//            
-//            switch cardColor {
-//            case .firstColor:
-//                color = colors[0]
-//            case .secondColor:
-//                color = colors[1]
-//            case .thirdColor:
-//                color = colors[2]
-//            }
-//            
-//            switch cardNumberOfSymbols {
-//            case .One:
-//                numberOfSymbols = 1
-//            case .Two:
-//                numberOfSymbols = 2
-//            case .Three:
-//                numberOfSymbols = 3
-//            }
-//            
-//            switch cardShading {
-//            case .firstShading:
-//                shadingStyle = 1
-//            case .secondShading:
-//                shadingStyle = 2
-//            case .thirdShading:
-//                shadingStyle = 3
-//            }
-//            
-//            drawSymbolsOnCardWithColorAndShading(numberOfSymbols, symbol: symbol, on: cardButtons[index], with: color, and: shadingStyle)
-//            cardButtons[index].backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-//            buttonsOfCards[index] = set.boardCards[index]
-//            cardButtons[index].isEnabled = true
-//            
-//        }
-//    }
-//    
-//    func startNewGame() {
-//        displayBoardCards()
-//    }
-//    
-//    @IBAction func touchCard(_ sender: UIButton) {
-//        if let buttonIndex = cardButtons.index(of: sender), let card = buttonsOfCards[buttonIndex] {
-//            set.chooseCard(card)
-//            updateView()
-//        }
-//    }
-//    
-//    let blue = UIColor.init(red: (72 / 255), green: (133 / 255), blue: (237 / 255), alpha: 1).cgColor
-//    
-//    func disableAllButtons() {
-//        for button in cardButtons {
-//            button.backgroundColor =  #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 0)
-//            button.setAttributedTitle(NSMutableAttributedString.init(string: "", attributes: [:]), for: .normal)
-//            button.isEnabled = false
-//        }
-//    }
-//    
-//    func updateView() {
-//        for (buttonIndex, card) in buttonsOfCards {
-//            //Draw card selection
-//            if set.selectedCards.contains(card) {
-//                selectCard(button: cardButtons[buttonIndex])
-//            }
-//            else {
-//                deselectCard(button: cardButtons[buttonIndex])
-//            }
-//        }
-//        //Remove matched cards
-//        disableAllButtons()
-//        displayBoardCards()
-//        
-//        if set.boardCards.count == cardButtons.count || set.cardDeck.count < 3 {
-//            deal3CardsButton.isEnabled = false
-//        }
-//        
-//        scoreLabel.text = "Score: \(set.score)"
-//        foundSetsLabel.text = "Found Sets: \(set.foundSets)"
-//        messageLabel.text = set.message
-//        if set.messageStatus {
-//            messageLabel.textColor = green
-//        }
-//        else if !set.messageStatus {
-//            messageLabel.textColor = red
-//        }
-//    }
-//    
-//    func selectCard(button: UIButton) {
-//        button.layer.borderWidth = 3.0
-//        button.layer.borderColor = blue
-//    }
-//    
-//    func deselectCard(button: UIButton) {
-//        button.layer.borderWidth = 0.0
-//    }
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        startNewGame()
+    }
+
+    func startNewGame() {
+        
+    }
+
+    func updateView() {
+         //Draw card selection
+        //Remove matched cards
+    }
+
     @IBAction func touchDeal3MoreCards(_ sender: UIButton) {
-//        set.drawThreeMoreCards()
-//        updateView()
+        
     }
     
     @IBAction func touchRevealASet(_ sender: UIButton) {
+        
     }
     
     @IBAction func touchNewGame(_ sender: UIButton) {
-//        set.reset()
-//        startNewGame()
-//        updateView()
+
     }
 }
 
