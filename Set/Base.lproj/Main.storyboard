@@ -43,7 +43,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IcS-Ud-vGf">
-                                <rect key="frame" x="16" y="96.333333333333329" width="343" height="24.333333333333329"/>
+                                <rect key="frame" x="16" y="96.333333333333329" width="343" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" priority="750" constant="25" id="GrU-0y-M0h"/>
                                 </constraints>
@@ -92,32 +92,18 @@
                                     </button>
                                 </subviews>
                             </stackView>
-                            <view opaque="NO" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="9Yb-rZ-Cio" customClass="SetCardView" customModule="Set" customModuleProvider="target">
-                                <rect key="frame" x="16" y="136.66666666666669" width="343" height="548.66666666666652"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" priority="750" constant="400" id="le0-e3-cpQ"/>
-                                    <constraint firstAttribute="width" secondItem="9Yb-rZ-Cio" secondAttribute="height" multiplier="5:8" id="oAf-No-cTh"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.94115844286243655" green="0.94115844286243655" blue="0.94115844286243655" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="9Yb-rZ-Cio" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="468-UK-Lpq"/>
                             <constraint firstItem="WJb-vP-NtG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="4YF-ND-9uD"/>
                             <constraint firstItem="IcS-Ud-vGf" firstAttribute="top" secondItem="WJb-vP-NtG" secondAttribute="bottom" constant="16" id="4bn-02-J4y"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="WJb-vP-NtG" secondAttribute="trailing" constant="16" id="6Io-Se-nd6"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xza-86-snG" secondAttribute="trailing" constant="16" id="6rv-eM-dso"/>
-                            <constraint firstItem="9Yb-rZ-Cio" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="16" id="A2O-Pk-ayg"/>
-                            <constraint firstItem="9Yb-rZ-Cio" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="Gu3-7q-ip4"/>
                             <constraint firstItem="IcS-Ud-vGf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="KHO-aj-mEn"/>
-                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9Yb-rZ-Cio" secondAttribute="trailing" constant="16" id="O8r-Px-KZY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="xza-86-snG" secondAttribute="bottom" constant="16" id="O9f-nk-gSu"/>
-                            <constraint firstItem="xza-86-snG" firstAttribute="top" relation="greaterThanOrEqual" secondItem="9Yb-rZ-Cio" secondAttribute="bottom" constant="16" id="YbI-Nz-4ki"/>
                             <constraint firstItem="WJb-vP-NtG" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="eL3-bc-3Ni"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="IcS-Ud-vGf" secondAttribute="trailing" constant="16" id="iYD-sK-Riw"/>
                             <constraint firstItem="xza-86-snG" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="m3H-pf-Yno"/>
-                            <constraint firstItem="9Yb-rZ-Cio" firstAttribute="top" relation="greaterThanOrEqual" secondItem="IcS-Ud-vGf" secondAttribute="bottom" constant="16" id="zdt-Eh-Tl8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
