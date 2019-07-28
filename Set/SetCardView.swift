@@ -31,7 +31,7 @@ class SetCardView: UIView {
         number = .three
         shape = .diamond
         color = .purple
-        shading = .stroked
+        shading = .striped
     }
 
     override func layoutSubviews() {
@@ -89,8 +89,8 @@ class SetCardView: UIView {
         case .filled:
             shapePath.fill()
         case .striped:
-//            shapePath.stripe(in: rect)
-            shapePath.alphaFill()
+            shapePath.lineWidth = 1.5
+            shapePath.stripe(in: rect)
         case .stroked:
             shapePath.lineWidth = 2.0
             shapePath.stroke()
@@ -250,12 +250,14 @@ extension UIBezierPath {
     }
     
     func stripe(in rect: CGRect) {
+        UIGraphicsGetCurrentContext()?.saveGState()
         self.addClip()
         for i in stride(from: 0.0, through: Double(rect.size.width), by: 5.0) {
             self.move(to: CGPoint(x: rect.origin.x + CGFloat(i), y: rect.origin.y))
             self.addLine(to: CGPoint(x: rect.origin.x + CGFloat(i), y: rect.origin.y + rect.size.height))
         }
         self.stroke()
+        UIGraphicsGetCurrentContext()?.restoreGState()
     }
     
     func alphaFill() {
