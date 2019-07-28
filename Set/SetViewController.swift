@@ -14,6 +14,7 @@ class SetViewController: UIViewController {
 //    
 //    @IBOutlet var cardButtons: [UIButton]!
 //    
+    @IBOutlet weak var playgroundView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     
     @IBOutlet weak var scoreLabel: UILabel!
