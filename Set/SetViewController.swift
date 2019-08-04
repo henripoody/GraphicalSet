@@ -33,12 +33,34 @@ class SetViewController: UIViewController {
     }
 
     func newGame() {
-        
+        updateView()
     }
 
     func updateView() {
-         //Draw card selection
-        //Remove matched cards
+        grid.frame = playgroundView.bounds
+        grid.cellCount = set.boardCards.count
+        
+        //Remove all existing cardViews
+        for view in playgroundView.subviews {
+            view.removeFromSuperview()
+        }
+        
+        //Draw cardViews based on boardCards
+        for index in set.boardCards.indices {
+            if let cardViewFrame = grid[index]{
+                let card = set.boardCards[index]
+                let cardView = SetCardView(frame: cardViewFrame.insetBy(dx: SetCardView.SizeRatio.cardViewInsetValue, dy: SetCardView.SizeRatio.cardViewInsetValue))
+                
+                cardView.color = card.color
+                cardView.number =  card.numberOfSymbols
+                cardView.shading = card.shading
+                cardView.shape = card.symbol
+                
+                playgroundView.addSubview(cardView)
+            } else {
+                print("Grid[\(index)] does not exist")
+            }
+        }
     }
 
     @IBAction func touchDeal3MoreCards(_ sender: UIButton) {
