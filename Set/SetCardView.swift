@@ -28,10 +28,10 @@ class SetCardView: UIView {
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 0)
         view.frame = shapeViewFrame
         
-        number = .three
-        shape = .diamond
-        color = .purple
-        shading = .striped
+//        number = .three
+//        shape = .diamond
+//        color = .purple
+//        shading = .striped
     }
 
     override func layoutSubviews() {
@@ -101,6 +101,16 @@ class SetCardView: UIView {
         let card = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
         UIColor.white.setFill()
         card.fill()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        
+        backgroundColor = UIColor.clear
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
     
     override func draw(_ rect: CGRect) {
