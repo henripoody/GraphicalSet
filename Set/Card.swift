@@ -32,7 +32,7 @@ enum Number: Int {
 }
 
 
-struct Card {
+struct Card: Equatable {
     var cardID: Int
     let symbol: Shape
     let color: Color
