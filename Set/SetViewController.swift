@@ -10,7 +10,9 @@ import UIKit
 
 class SetViewController: UIViewController {
     
-//    lazy var set = SetGame(maxNumberOfBoardCards: cardButtons.count)
+    lazy var set = SetGame()
+    
+    lazy var grid = Grid(layout: .aspectRatio(SetCardView.SizeRatio.cardViewAspectRatio), frame: playgroundView.bounds)
   
     @IBOutlet weak var playgroundView: UIView!
     
@@ -27,10 +29,10 @@ class SetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        startNewGame()
+        newGame()
     }
 
-    func startNewGame() {
+    func newGame() {
         
     }
 
